@@ -1,6 +1,6 @@
 import streamlit as st
 import re
-from Methods import check_person_imgs,Add_student
+from Methods import Add_student,Get_Status_and_encodings
 def display_imgs(imgs):
     if len(imgs)<=3:
         # Create a container to hold the images
@@ -83,8 +83,8 @@ def sign_up_process(email,username,password1,password2,imgs):
         return
     if not image_Check_display(imgs):
         return
-    encodings=check_person_imgs(imgs)
-    if not encodings:
+    Status,encodings=Get_Status_and_encodings(imgs)
+    if not Status:
         st.error("The images Doesn't belong to the same person.")
         return
     sign_up_info=Add_student(email, username, password1, encodings)##will return status code and the message

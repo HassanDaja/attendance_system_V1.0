@@ -3,7 +3,6 @@ url="http://127.0.0.1:5555"
 
 
 def student_signup(email, username, password, encodings):
-    encodings = [array.tolist() for array in encodings]
     data = {'email': email, 'username': username, 'password': password, 'encodings': encodings}
     req = requests.post(f"{url}/Database/add_student_to_db",json=data)
     status = req.json()['status']
